@@ -1,0 +1,27 @@
+{
+  "name": "fetch-decorator",
+  "version": "1.0.0",
+  "description": "decorator for fetch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeliex/fetch-decorator.git"
+  },
+  "keywords": [
+    "fetch"
+  ],
+  "author": "yeliex",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yeliex/fetch-decorator/issues"
+  },
+  "homepage": "https://github.com/yeliex/fetch-decorator#readme",
+  "dependencies": {
+    "autofetch": "^3.0.5",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.clonedeep": "^4.5.0"
+  }
+}
