@@ -1,6 +1,6 @@
 {
   "name": "fetch-decorator",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha1",
   "description": "decorator for fetch",
   "main": "index.js",
   "scripts": {
