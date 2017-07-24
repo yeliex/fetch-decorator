@@ -8,7 +8,9 @@ const _ = {
 
 const combinePath = (...paths) => {
   return paths.map(p => p || '/').reverse().reduce((total, key) => {
-    return key.match(/^\/\//) ? key : join(total, key).replace(/^\/{1,}/, total.match(/^\/\//) ? '//' : '/');
+    return key.match(/^\/\//) ? key : join(total, key).replace(/^\/{1,}/, total.match(/^\/\//) ? '//' : '/').replace(/^(http|https):(\/{1,})/, (_t, protocol) => {
+      return `${protocol}://`;
+    });
   }, '');
 };
 
@@ -55,7 +57,8 @@ const decorateName = (methods, config) => {
       query: combineObject(method.query, query, config.query),
       params: combineObject(method.params, params, config.params),
       body: combineObject(method.body, body, config.body),
-      headers: combineObject(method.headers, headers, config.headers)
+      headers: combineObject(method.headers, headers, config.headers),
+      fetch: config.fetch
     });
 
     return total;
@@ -65,11 +68,11 @@ const decorateName = (methods, config) => {
 module.exports = function Service(config) {
   const keys = Object.keys(config).filter(k => !ReservedName.includes(k));
 
-  const { path, method, query, params, body, headers } = config;
+  const { path, method, query, params, body, headers, fetch } = config;
 
   return keys.reduce((total, key) => {
     return Object.assign({}, total, decorateName(config[key], {
-      path, query, params, body, headers, key
+      path, query, params, body, headers, fetch, key
     }));
   }, {});
 };

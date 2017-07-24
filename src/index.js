@@ -1,5 +1,5 @@
-const fetch = require('autofetch');
 const Service = require('./libs/Service');
+const global = require('./libs/global');
 
 const _ = {
   cloneDeep: require('lodash.clonedeep')
@@ -29,6 +29,17 @@ const groupRegister = (configs) => {
   });
 };
 
+const setGlobalFetch = (func) => {
+  if (typeof func !== 'function') {
+    throw new Error('global method must be function');
+  }
+  if (global.configured) {
+    console.warn('[global-decorator] Re-define global method would overwrite global');
+  }
+  global.fetch = func;
+  global.configured = true;
+};
+
 Object.defineProperties(Stack, {
   register: {
     configurable: false,
@@ -39,6 +50,11 @@ Object.defineProperties(Stack, {
     configurable: false,
     enumerable: false,
     value: groupRegister
+  },
+  globalFetch: {
+    configurable: false,
+    enumerable: false,
+    value: setGlobalFetch
   }
 });
 
