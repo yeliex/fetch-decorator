@@ -1,4 +1,4 @@
-const fetch = require('autofetch');
+const { fetch } = require('autofetch');
 
 const parseResponse = (response) => {
   return response.text().then((text) => {
