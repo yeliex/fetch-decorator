@@ -29,8 +29,12 @@ const combineObject = (...objs) => {
   return Object.assign({}, ...objs);
 };
 
+const onlyGet = (methods) => {
+  return !AllowedMethods.some(method => methods[method] || methods[method.toLowerCase()]);
+};
+
 const decorateName = (methods, config) => {
-  if (!methods.get && !methods.GET) {
+  if (onlyGet(methods)) {
     methods = {
       get: Object.assign({}, methods)
     };

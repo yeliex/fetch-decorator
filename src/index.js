@@ -1,14 +1,9 @@
 const Service = require('./libs/Service');
 const global = require('./libs/global');
 
-const _ = {
-  cloneDeep: require('lodash.clonedeep')
-};
-
 const Stack = {};
 
 const register = (config) => {
-  const Config = _.cloneDeep(config);
   if (typeof config === 'function') {
     config.namespace = config.namespace || config.name;
   }
