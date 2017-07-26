@@ -33,7 +33,9 @@ Temporary Items
 !yarn.lock
 npm-debug.log*
 out
-dist/
+/dist
+/es
+/lib
 assets/build
 /config.js
 .vscode

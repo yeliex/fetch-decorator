@@ -28,6 +28,17 @@
     "url": "https://github.com/yeliex/fetch-decorator/issues"
   },
   "homepage": "https://github.com/yeliex/fetch-decorator#readme",
+  "files": [
+    "examples",
+    "src",
+    "dist",
+    "es",
+    "lib",
+    "README.md",
+    "package.json",
+    "yarn.lock",
+    "LICENSE"
+  ],
   "dependencies": {
     "autofetch": "^3.0.5",
     "lodash.camelcase": "^4.3.0",
