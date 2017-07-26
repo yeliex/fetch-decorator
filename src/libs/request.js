@@ -1,7 +1,8 @@
 const global = require('./global');
 
-module.exports = (config) => ({ query = {}, params = {}, body = {}, headers = {}, fetch = config.fetch || global.fetch } = {}) => {
+module.exports = (config) => ({ query = {}, params = {}, body = {}, headers = {}, fetch = config.fetch || global.fetch, mock } = {}) => {
   return fetch(config.path, {
+    mock,
     query: Object.assign(config.query, query),
     params: Object.assign(config.params, params),
     body: Object.assign(config.body, body),

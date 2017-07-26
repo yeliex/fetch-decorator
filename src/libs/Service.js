@@ -29,6 +29,10 @@ const combineObject = (...objs) => {
   return Object.assign({}, ...objs);
 };
 
+const combineMock = (a, b, c) => {
+  return a === false ? a : (a || (b === false ? b : (b || c)));
+};
+
 const onlyGet = (methods) => {
   return !AllowedMethods.some(method => methods[method] || methods[method.toLowerCase()]);
 };
@@ -40,7 +44,7 @@ const decorateName = (methods, config) => {
     };
   }
 
-  const { path, query, params, body, headers } = methods;
+  const { path, query, params, body, headers, mock } = methods;
 
   return AllowedMethods.reduce((total, methodName) => {
     if (methods[methodName] && methods[methodName.toLowerCase()]) {
@@ -62,6 +66,7 @@ const decorateName = (methods, config) => {
       params: combineObject(method.params, params, config.params),
       body: combineObject(method.body, body, config.body),
       headers: combineObject(method.headers, headers, config.headers),
+      mock: combineMock(method.mock, mock, config.mock),
       fetch: config.fetch
     });
 
@@ -72,11 +77,11 @@ const decorateName = (methods, config) => {
 module.exports = function Service(config) {
   const keys = Object.keys(config).filter(k => !ReservedName.includes(k));
 
-  const { path, method, query, params, body, headers, fetch } = config;
+  const { path, method, query, params, body, headers, fetch, mock } = config;
 
   return keys.reduce((total, key) => {
     return Object.assign({}, total, decorateName(config[key], {
-      path, query, params, body, headers, fetch, key
+      path, query, params, body, headers, fetch, mock, key
     }));
   }, {});
 };
