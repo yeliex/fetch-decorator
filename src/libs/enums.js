@@ -10,9 +10,12 @@ exports.ReservedName = [
 
 exports.AllowedMethods = [
   'GET',
-  'POST',
   'HEAD',
-  'OPTIONS',
+  'POST',
   'PUT',
-  'DELETE'
+  'DELETE',
+  'CONNECT',
+  'OPTIONS',
+  'TRACE',
+  'PATCH'
 ];
