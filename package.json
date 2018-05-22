@@ -40,7 +40,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "autofetch": "^3.0.5",
+    "autofetch": "^4.1.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.clonedeep": "^4.5.0"
   },
@@ -54,6 +54,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.0.1",
-    "webpack": "^3.4.1"
+    "webpack": "^4.8.3"
   }
 }
